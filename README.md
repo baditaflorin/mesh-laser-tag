@@ -1,7 +1,7 @@
 # mesh-laser-tag
 
 [![pages](https://img.shields.io/badge/live-baditaflorin.github.io%2Fmesh-laser-tag-ff3838)](https://baditaflorin.github.io/mesh-laser-tag/)
-[![version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/baditaflorin/mesh-laser-tag/blob/main/package.json)
+[![version](https://img.shields.io/badge/version-0.1.1-blue)](https://github.com/baditaflorin/mesh-laser-tag/blob/main/package.json)
 [![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 > Phone-as-laser. Compass+tilt aim, GPS positions, hold-lock 2s = tagged out.
@@ -27,6 +27,26 @@
 A **rootless-computing** peer-to-peer browser app. No backend of its own beyond the self-hosted WebRTC stack listed below. State lives in a Yjs mesh shared by everyone in the same room.
 
 Read the principles → **https://baditaflorin.github.io/rootless-computing/principles.html**
+
+## How to play
+
+1. Type a name and tap **JOIN GAME**.
+2. Tap **tap to enable compass + GPS** to arm the phone's orientation sensor
+   (iOS prompts for permission here).
+3. **Aim** the phone — the radar blips show every peer at their real bearing
+   relative to where you're pointing. Optionally tap **share GPS position** so
+   bearings use true geographic direction instead of the radar fallback layout.
+4. **Hold the aim on a peer for 2 seconds** (`hold-lock`). The blip turns white
+   and a ring fills; at full it fires a tag and that peer loses a life. Three
+   lives gone = tagged out. The tag and the life loss sync to every peer in the
+   room over the Yjs mesh.
+
+Tags are a `room.doc.transact` on the shared `lives` map + `tags` log, so peer A
+aiming-and-holding on peer B is seen by everyone, including peer C spectating.
+
+**On desktop / no sensor:** each peer row has a **test tag** button that funnels
+through the exact same mesh mutation, so the game is fully playable (and
+headless-testable) without a phone gyroscope or GPS.
 
 ## Quickstart
 

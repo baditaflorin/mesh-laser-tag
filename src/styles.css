@@ -140,6 +140,54 @@ body,
   filter: drop-shadow(0 0 4px var(--mesh-accent));
 }
 
+.tag-radar-blip.is-aimed {
+  fill: #fff;
+  filter: drop-shadow(0 0 6px #fff);
+}
+
+.tag-radar-cone {
+  fill: rgba(255, 56, 56, 0.12);
+  stroke: rgba(255, 56, 56, 0.3);
+  stroke-width: 0.4;
+}
+
+.tag-radar-hold {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  /* pathLength=1 so dasharray/offset are fractions of the full circle. */
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.tag-aimer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tag-gps-toggle {
+  align-self: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255, 56, 56, 0.4);
+  background: transparent;
+  color: var(--mesh-accent);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.tag-gps-toggle[aria-pressed="true"] {
+  background: rgba(255, 56, 56, 0.18);
+}
+
+.tag-gps-error {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #ff8a8a;
+  margin: 0;
+}
+
 .tag-peer-list {
   list-style: none;
   margin: 0;
